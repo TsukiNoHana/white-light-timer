@@ -1,0 +1,30 @@
+import RPi.GPIO as GPIO
+#import the correct RTC library
+GPIO.setmode(GPIO.BCM)
+
+pin_out=5
+GPIO.setup(pin_out, GPIO.OUT, initial=GPIO.LOW)
+
+#RTC=RTC_number.RTC_number()
+#RTC=WriteDateTime(numbers?)
+
+keep_going='y'
+
+while keep_going=='y':
+    on_off=int(input("Do you want to turn the light on or off (1 for on, 0 for off): "))
+    if on_off==1:
+        time_on=input("When do you want to turn the light on \n(use numbers in the following format year:month:day:dayofweek:hour:minute:second): ")
+        time_turn_on=time_on.split(':')
+##        if time_turn_on==RTC.ReadDateTime():
+##            GPIO.output(pin_out, GPIO.HIGH)
+
+    elif on_off==0:
+        time_off=input("When do you want to turn the light off \n(use numbers in the following format year:month:day:dayofweek:hour:minute:second): ")
+        time_turn_off=time_off.split(':')
+##        if time_turn_off==RTC.ReadDateTime():
+##            GPIO.output(pin_out, GPIO.LOW)
+
+    else:
+        print("Invalid input. Goodbye.")
+
+    keep_going=input("Do you want to continue (y/n)? ")
